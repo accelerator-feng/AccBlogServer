@@ -1,7 +1,6 @@
 {
   "name": "AccBlogServer",
   "version": "1.0.0",
-  "description": "",
   "private": true,
   "dependencies": {
     "egg": "^1.4.0",

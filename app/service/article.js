@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = app => {
-  class Article extends app.Service {
+  class article extends app.Service {
     *find(id) {
       const start = (id - 1) * 5;
       const end = start + 5;
@@ -11,5 +13,5 @@ module.exports = app => {
       return { articles, total };
     }
   }
-  return Article;
+  return article;
 };
