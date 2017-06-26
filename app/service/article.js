@@ -14,9 +14,17 @@ module.exports = app => {
     }
     *get(id) {
       const article = yield this.ctx.model.Article.find({
-        _id: `${id}`,
+        _id: id,
       });
-      return article[0];
+      const previous = yield this.ctx.model.Article
+        .find({ _id: { $lt: id } }, { _id: 1, title: 1 })
+        .sort({ _id: -1 })
+        .limit(1);
+      const next = yield this.ctx.model.Article
+        .find({ _id: { $gt: id } }, { _id: 1, title: 1 })
+        .sort({ _id: 1 })
+        .limit(1);
+      return { article: article[0], previous: previous[0], next: next[0] };
     }
   }
   return article;
