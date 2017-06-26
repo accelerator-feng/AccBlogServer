@@ -12,6 +12,12 @@ module.exports = app => {
       const total = yield this.ctx.model.Article.find().count();
       return { articles, total };
     }
+    *get(id) {
+      const article = yield this.ctx.model.Article.find({
+        _id: `${id}`,
+      });
+      return article[0];
+    }
   }
   return article;
 };
