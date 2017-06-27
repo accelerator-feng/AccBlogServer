@@ -2,7 +2,7 @@
 
 module.exports = app => {
   class article extends app.Service {
-    *find(id) {
+    *showPage(id) {
       const start = (id - 1) * 5;
       const end = start + 5;
       const articles = yield this.ctx.model.Article
@@ -12,7 +12,7 @@ module.exports = app => {
       const total = yield this.ctx.model.Article.find().count();
       return { articles, total };
     }
-    *get(id) {
+    *show(id) {
       const article = yield this.ctx.model.Article.find({
         _id: id,
       });

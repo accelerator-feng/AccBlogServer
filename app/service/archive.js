@@ -24,15 +24,16 @@ module.exports = app => {
       const archiveMap = {};
       timeList.forEach(item => {
         let time = item.time;
-        time = time.slice(0, time.length - 3);
-        time =
-          timeMap[time.slice(time.length - 2, time.length)] +
-          ' ' +
-          time.slice(0, time.length - 3);
+        time = time.slice(0, time.length - 3).replace('-', '/');
         if (!archiveMap[time]) {
-          archiveMap[time] = 1;
+          archiveMap[time] = {
+            text: timeMap[time.slice(time.length - 2, time.length)] +
+              ' ' +
+              time.slice(0, time.length - 3),
+            count: 1,
+          };
         } else {
-          archiveMap[time]++;
+          archiveMap[time].count++;
         }
       });
       return archiveMap;
