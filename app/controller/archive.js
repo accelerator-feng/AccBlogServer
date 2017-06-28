@@ -8,8 +8,24 @@ module.exports = app => {
       const archiveList = yield service.archive.showAll();
       ctx.body = yield { archiveMap, archiveList, status: '归档' };
     }
-    *showYear() {}
-    *showMonth() {}
+    *showYear() {
+      const { ctx, service } = this;
+      const archiveMap = yield service.archive.index();
+      const archiveList = yield service.archive.show(ctx.params.year);
+      ctx.body = yield { archiveMap, archiveList, status: ctx.params.year };
+    }
+    *showMonth() {
+      const { ctx, service } = this;
+      const archiveMap = yield service.archive.index();
+      const archiveList = yield service.archive.show(
+        `${ctx.params.year}-${ctx.params.month}`,
+      );
+      ctx.body = yield {
+        archiveMap,
+        archiveList,
+        status: `${ctx.params.year}/${ctx.params.month}`,
+      };
+    }
   }
   return archive;
 };

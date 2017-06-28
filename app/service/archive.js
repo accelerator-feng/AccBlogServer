@@ -45,6 +45,13 @@ module.exports = app => {
       );
       return archiveList;
     }
+    *show(query) {
+      const archiveList = this.ctx.model.Article.find(
+        { time: new RegExp(`^${query}`) },
+        { time: 1, title: 1 },
+      );
+      return archiveList;
+    }
   }
   return archive;
 };
