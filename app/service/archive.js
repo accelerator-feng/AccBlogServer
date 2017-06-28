@@ -38,6 +38,13 @@ module.exports = app => {
       });
       return archiveMap;
     }
+    *showAll() {
+      const archiveList = this.ctx.model.Article.find(
+        {},
+        { time: 1, title: 1 },
+      );
+      return archiveList;
+    }
   }
   return archive;
 };
