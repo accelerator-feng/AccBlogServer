@@ -16,6 +16,15 @@ module.exports = app => {
       });
       return categoryMap;
     }
+    *show(category) {
+      const categoryList = yield this.ctx.model.Article.find(
+        {
+          category,
+        },
+        { time: 1, title: 1 },
+      );
+      return categoryList;
+    }
   }
   return category;
 };
