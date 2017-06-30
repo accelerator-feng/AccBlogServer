@@ -22,4 +22,4 @@ const encrypt = password => {
   return { password: md5(md5(password) + salt), salt };
 };
 
-module.exports = { encrypt };
+module.exports = { encrypt, md5 };

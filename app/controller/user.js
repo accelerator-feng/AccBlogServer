@@ -22,9 +22,9 @@ module.exports = app => {
       const body = ctx.request.body;
       const hasUser = yield service.user.find(body.r_username);
       if (hasUser) {
-        ctx.body = { error: 'Username already exists' };
-        ctx.status = 400;
-        return;
+        const err = new Error('Username Already Exists');
+        err.status = 400;
+        throw err;
       }
       const res = yield service.user.create(body);
       ctx.body = { id: res._id };

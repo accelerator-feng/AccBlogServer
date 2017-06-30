@@ -1,19 +1,19 @@
 'use strict';
 
 module.exports = app => {
-  app.post('/user', app.middlewares.errorHandler(), 'user.create');
-  app.get('/user/:username', 'user.find');
+  app.post('/api/user', 'user.create');
+  app.get('/api/user/:username', 'user.find');
 
-  app.post('/session', 'session.create');
+  app.post('/api/session', 'session.create');
 
-  app.get('/index', 'index');
+  app.get('/api/index', 'index');
 
-  app.get('/articles/:id', 'article.show');
-  app.get('/articles/page/:id', 'article.page');
+  app.get('/api/articles/:id', 'article.show');
+  app.get('/api/articles/page/:id', 'article.page');
 
-  app.get('/archives/', 'archive.index');
-  app.get('/archives/:year', 'archive.year');
-  app.get('/archives/:year/:month', 'archive.month');
+  app.get('/api/archives/', 'archive.index');
+  app.get('/api/archives/:year', 'archive.year');
+  app.get('/api/archives/:year/:month', 'archive.month');
 
-  app.get('/categories/:category', 'category.show');
+  app.get('/api/categories/:category', 'category.show');
 };

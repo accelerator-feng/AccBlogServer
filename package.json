@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "egg": "^1.4.0",
+    "egg": "^1.5.0",
     "egg-mongoose": "^2.1.0",
     "egg-validate": "^1.0.0"
   },
   "devDependencies": {
     "autod": "^2.8.0",
     "autod-egg": "^1.0.0",
-    "egg-bin": "^3.4.0",
-    "egg-ci": "^1.6.0",
+    "egg-bin": "^4.0.4",
+    "egg-ci": "^1.8.0",
     "egg-mock": "^3.7.0",
-    "eslint": "^3.19.0",
-    "eslint-config-egg": "^4.2.0",
+    "eslint": "^4.1.1",
+    "eslint-config-egg": "^5.0.0",
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/accelerator-feng/AccBlogServer.git"
   },
   "author": "YinFeng",
   "license": "MIT"

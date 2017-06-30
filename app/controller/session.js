@@ -3,8 +3,31 @@
 module.exports = app => {
   class session extends app.Controller {
     *create() {
-      // const { ctx, service } = this;
-      // this.ctx.body = ctx.request.body;
+      const { ctx, service } = this;
+      const createRule = {
+        username: {
+          type: 'string',
+          max: 16,
+          format: /^[a-zA-Z][a-zA-Z0-9_]*$/,
+        },
+        password: {
+          type: 'password',
+          max: 16,
+          min: 5,
+          format: /^[a-zA-Z0-9_]*$/,
+        },
+      };
+      ctx.validate(createRule);
+      const body = ctx.request.body;
+      const check = yield service.session.check(body);
+      if (!check) {
+        const err = new Error('Invalid Grant');
+        err.status = 400;
+        throw err;
+      } else {
+        ctx.body = { id: check.id };
+        ctx.status = 201;
+      }
     }
   }
   return session;
