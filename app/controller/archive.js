@@ -2,25 +2,25 @@
 
 module.exports = app => {
   class archive extends app.Controller {
-    *showAll() {
+    *index() {
       const { ctx, service } = this;
       const archiveMap = yield service.archive.index();
       const archiveList = yield service.archive.showAll();
-      ctx.body = yield { archiveMap, archiveList, status: '归档' };
+      ctx.body = { archiveMap, archiveList, status: '归档' };
     }
-    *showYear() {
+    *year() {
       const { ctx, service } = this;
       const archiveMap = yield service.archive.index();
       const archiveList = yield service.archive.show(ctx.params.year);
-      ctx.body = yield { archiveMap, archiveList, status: ctx.params.year };
+      ctx.body = { archiveMap, archiveList, status: ctx.params.year };
     }
-    *showMonth() {
+    *month() {
       const { ctx, service } = this;
       const archiveMap = yield service.archive.index();
       const archiveList = yield service.archive.show(
         `${ctx.params.year}-${ctx.params.month}`,
       );
-      ctx.body = yield {
+      ctx.body = {
         archiveMap,
         archiveList,
         status: `${ctx.params.year}/${ctx.params.month}`,

@@ -6,7 +6,7 @@ module.exports = app => {
       const { ctx, service } = this;
       const categoryMap = yield service.category.index();
       const categoryList = yield service.category.show(ctx.params.category);
-      ctx.body = yield {
+      ctx.body = {
         categoryMap,
         categoryList,
         status: ctx.params.category,

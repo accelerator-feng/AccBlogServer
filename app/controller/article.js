@@ -2,7 +2,7 @@
 
 module.exports = app => {
   class article extends app.Controller {
-    *showPage() {
+    *page() {
       const { ctx, service } = this;
       this.ctx.body = yield service.article.showPage(ctx.params.id);
     }
