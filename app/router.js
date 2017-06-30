@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  app.post('/user', 'user.create');
+  app.post('/user', app.middlewares.errorHandler(), 'user.create');
   app.get('/user/:username', 'user.find');
 
   app.post('/session', 'session.create');

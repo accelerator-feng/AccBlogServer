@@ -5,11 +5,27 @@ module.exports = app => {
     *create() {
       const { ctx, service } = this;
       const createRule = {
-        r_userName: { type: 'string' },
-        r_password: { type: 'string' },
+        r_username: {
+          type: 'string',
+          max: 16,
+          format: /^[a-zA-Z][a-zA-Z0-9_]*$/,
+        },
+        r_password: {
+          type: 'password',
+          compare: 'r_confirmPassword',
+          max: 16,
+          min: 5,
+          format: /^[a-zA-Z0-9_]*$/,
+        },
       };
       ctx.validate(createRule);
       const body = ctx.request.body;
+      const hasUser = yield service.user.find(body.r_username);
+      if (hasUser) {
+        ctx.body = { error: 'Username already exists' };
+        ctx.status = 400;
+        return;
+      }
       const res = yield service.user.create(body);
       ctx.body = { id: res._id };
       ctx.status = 201;

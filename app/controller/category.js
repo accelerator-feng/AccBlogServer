@@ -9,7 +9,7 @@ module.exports = app => {
       ctx.body = {
         categoryMap,
         categoryList,
-        status: ctx.params.category,
+        title: ctx.params.category,
       };
     }
   }

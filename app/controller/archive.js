@@ -6,13 +6,13 @@ module.exports = app => {
       const { ctx, service } = this;
       const archiveMap = yield service.archive.index();
       const archiveList = yield service.archive.showAll();
-      ctx.body = { archiveMap, archiveList, status: '归档' };
+      ctx.body = { archiveMap, archiveList, title: '归档' };
     }
     *year() {
       const { ctx, service } = this;
       const archiveMap = yield service.archive.index();
       const archiveList = yield service.archive.show(ctx.params.year);
-      ctx.body = { archiveMap, archiveList, status: ctx.params.year };
+      ctx.body = { archiveMap, archiveList, title: ctx.params.year };
     }
     *month() {
       const { ctx, service } = this;
@@ -23,7 +23,7 @@ module.exports = app => {
       ctx.body = {
         archiveMap,
         archiveList,
-        status: `${ctx.params.year}/${ctx.params.month}`,
+        title: `${ctx.params.year}/${ctx.params.month}`,
       };
     }
   }
