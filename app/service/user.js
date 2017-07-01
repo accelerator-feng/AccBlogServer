@@ -15,7 +15,7 @@ module.exports = app => {
       const result = yield user.save();
       return result;
     }
-    *find(username) {
+    *query(username) {
       const user = yield this.ctx.model.User.find({ username });
       return user.length > 0;
     }

@@ -30,7 +30,7 @@ module.exports = app => {
       ctx.body = { id: res._id };
       ctx.status = 201;
     }
-    *find() {
+    *query() {
       const { ctx, service } = this;
       const createRule = {
         username: {
@@ -40,7 +40,7 @@ module.exports = app => {
         },
       };
       ctx.validate(createRule, ctx.query);
-      const hasUser = yield service.user.find(ctx.query.username);
+      const hasUser = yield service.user.query(ctx.query.username);
       ctx.body = { hasUser };
     }
   }

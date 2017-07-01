@@ -2,9 +2,11 @@
 
 module.exports = app => {
   app.post('/api/user', 'user.create');
-  app.get('/api/user', 'user.find');
+  app.get('/api/user', 'user.query');
 
+  app.get('/api/session/loginStatus', 'session.loginStatus');
   app.post('/api/session', 'session.create');
+  app.delete('/api/session', 'session.destroy');
 
   app.get('/api/index', 'index');
 
