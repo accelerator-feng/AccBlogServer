@@ -19,13 +19,14 @@ module.exports = app => {
       };
       ctx.validate(createRule);
       const body = ctx.request.body;
-      const check = yield service.session.check(body);
-      if (!check) {
+      const id = yield service.session.check(body);
+      if (!id) {
         const err = new Error('Invalid Grant');
         err.status = 400;
         throw err;
       } else {
-        ctx.body = { id: check.id };
+        ctx.session.id = id;
+        ctx.body = { id };
         ctx.status = 201;
       }
     }

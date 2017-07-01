@@ -2,7 +2,7 @@
 
 module.exports = app => {
   app.post('/api/user', 'user.create');
-  app.get('/api/user/:username', 'user.find');
+  app.get('/api/user', 'user.find');
 
   app.post('/api/session', 'session.create');
 
