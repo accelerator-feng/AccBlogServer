@@ -16,12 +16,6 @@ module.exports = appInfo => {
       options: {},
     },
 
-    security: {
-      csrf: {
-        enable: false,
-      },
-    },
-
     onerror: {
       errorPageUrl: '/50x.html',
     },
