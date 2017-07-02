@@ -20,7 +20,7 @@ module.exports = app => {
       };
       ctx.validate(createRule);
       const body = ctx.request.body;
-      const hasUser = yield service.user.find(body.r_username);
+      const hasUser = yield service.user.query(body.r_username);
       if (hasUser) {
         const err = new Error('Username Already Exists');
         err.status = 400;
@@ -41,7 +41,10 @@ module.exports = app => {
       };
       ctx.validate(createRule, ctx.query);
       const hasUser = yield service.user.query(ctx.query.username);
-      ctx.body = { hasUser };
+      ctx.body = {
+        hasUser,
+        message: hasUser ? 'Username already exists' : 'Username available',
+      };
     }
   }
   return user;

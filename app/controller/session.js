@@ -1,5 +1,7 @@
 'use strict';
 
+const ms = require('ms');
+
 module.exports = app => {
   class session extends app.Controller {
     *create() {
@@ -16,15 +18,23 @@ module.exports = app => {
           min: 5,
           format: /^[a-zA-Z0-9_]*$/,
         },
+        rememberMe: {
+          type: 'bool',
+          required: false,
+        },
       };
       ctx.validate(createRule);
       const body = ctx.request.body;
-      const { username } = yield service.session.check(body);
-      if (!username) {
+      const { username, rememberMe } = body;
+      const check = yield service.session.check(body);
+      if (!check) {
         const err = new Error('Invalid Grant');
         err.status = 400;
         throw err;
       } else {
+        if (rememberMe) {
+          ctx.session.maxAge = ms('7d');
+        }
         ctx.session.username = username;
         ctx.body = { username };
         ctx.status = 201;
@@ -37,8 +47,9 @@ module.exports = app => {
     }
     *loginStatus() {
       const { ctx } = this;
-      if (ctx.session.username) {
-        ctx.body = { username: ctx.session.username };
+      const username = ctx.session.username;
+      if (username) {
+        ctx.body = { username };
       } else {
         ctx.body = { message: 'The user is not logged in' };
       }

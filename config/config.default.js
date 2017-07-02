@@ -5,7 +5,7 @@ module.exports = appInfo => {
     // should change to your own
     keys: appInfo.name + '_1498198494981_6588',
 
-    middleware: ['errorHandler'],
+    middleware: ['errorHandler', 'saveSession'],
     errorHandler: {
       match: '/api',
     },
