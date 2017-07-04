@@ -11,7 +11,7 @@ module.exports = () => {
       const error = status === 500 && this.app.config.env === 'prod'
         ? 'Internal Server Error'
         : err.message;
-      // 从 error 对象上读出各个属性，设置到响应中
+
       this.body = { error };
       if (status === 422) {
         this.body.detail = err.errors;
