@@ -15,8 +15,8 @@ module.exports = app => {
   app.get('/api/index', 'init');
 
   // 文章
-  app.get('/api/articles/:id', 'article.show');
-  app.get('/api/articles/page/:id', 'article.page');
+  app.get('/api/article/:id', 'article.show');
+  app.get('/api/article/page/:id', 'article.page');
 
   // 归档
   app.get('/api/archives/', 'archive.index');
