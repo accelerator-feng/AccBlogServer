@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = app => {
-  // app.redirect('/', '/index.html');
   // 注册
   app.get('/api/user', 'user.query');
   app.post('/api/user', 'user.create');
@@ -10,6 +9,10 @@ module.exports = app => {
   app.get('/api/session/loginStatus', 'session.loginStatus');
   app.post('/api/session', 'session.create');
   app.delete('/api/session', 'session.destroy');
+
+  // 评论
+  app.get('/api/comment', 'comment.index');
+  app.post('/api/comment', 'comment.create');
 
   // 首页
   app.get('/api/index', 'init');
