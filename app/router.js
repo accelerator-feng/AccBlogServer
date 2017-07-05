@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  app.redirect('/', '/index.html');
+  // app.redirect('/', '/index.html');
   // 注册
   app.get('/api/user', 'user.query');
   app.post('/api/user', 'user.create');
