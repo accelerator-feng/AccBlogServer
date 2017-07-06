@@ -1,33 +1,41 @@
-# AccBlogServer
-
-
-
+# [AccBlogServer](https://github.com/accelerator-feng/AccBlogServer)
+## egg + mongodb
 ## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
-
-### Development
-```shell
+如需进一步了解，参见 [egg 文档][egg]。
+### Build Setup
+```bash
 $ npm install
 $ npm run dev
-$ open http://localhost:7001/news
 ```
-
-### Deploy
-
-Use `EGG_SERVER_ENV=prod` to enable prod mode
-
-```shell
-$ EGG_SERVER_ENV=prod npm start
+### api
 ```
+注册
+GET /api/user
+POST /api/user  
 
-### npm scripts
+登录
+GET /api/session/loginStatus
+POST /api/session
+DELETE /api/session   
 
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
+评论
+GET /api/comment
+POST /api/comment  
 
+首页
+GET /api/index  
+
+文章
+GET /api/article/:id
+GET /api/article/page/:id  
+
+归档
+GET /api/archives
+GET /api/archives/:year
+GET /api/archives/:year/:month  
+
+分类
+GET /api/categories/:category
+```
 
 [egg]: https://eggjs.org
