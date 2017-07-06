@@ -2,9 +2,9 @@
 
 module.exports = app => {
   class comment extends app.Controller {
-    *index() {
+    *show() {
       const { ctx, service } = this;
-      const commentList = yield service.comment.index();
+      const commentList = yield service.comment.show(ctx.params.id);
       ctx.body = { commentList };
     }
     *create() {
@@ -14,6 +14,9 @@ module.exports = app => {
           type: 'string',
         },
         time: {
+          type: 'string',
+        },
+        articleId: {
           type: 'string',
         },
       };

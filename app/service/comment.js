@@ -7,8 +7,8 @@ module.exports = app => {
       const result = yield comment.save();
       return result;
     }
-    *index() {
-      const commentList = yield this.ctx.model.Comment.find({});
+    *show(articleId) {
+      const commentList = yield this.ctx.model.Comment.find({ articleId });
       return commentList;
     }
   }

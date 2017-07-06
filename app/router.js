@@ -11,7 +11,7 @@ module.exports = app => {
   app.delete('/api/session', 'session.destroy');
 
   // 评论
-  app.get('/api/comment', 'comment.index');
+  app.get('/api/comment/:id', 'comment.show');
   app.post('/api/comment', 'comment.create');
 
   // 首页

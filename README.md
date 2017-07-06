@@ -19,7 +19,7 @@ POST /api/session
 DELETE /api/session   
 
 评论
-GET /api/comment
+GET /api/comment/:id
 POST /api/comment  
 
 首页
