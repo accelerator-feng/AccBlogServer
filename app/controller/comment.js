@@ -17,11 +17,10 @@ module.exports = app => {
           type: 'string',
         },
       };
-      this.ctx.validate(createRule);
+      ctx.validate(createRule);
       const username = ctx.session.username || 'tourist';
-      const { content, time } = ctx.request.body;
       const res = yield service.comment.create(
-        Object.assign({ content, time }, { username }),
+        Object.assign(ctx.request.body, { username }),
       );
       ctx.body = { id: res._id };
       ctx.status = 201;

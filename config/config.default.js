@@ -16,10 +16,6 @@ module.exports = appInfo => {
       options: {},
     },
 
-    onerror: {
-      errorPageUrl: '/50x.html',
-    },
-
     notfound: {
       pageUrl: '/404.html',
     },
