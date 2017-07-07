@@ -1,4 +1,6 @@
 # [AccBlogServer](https://github.com/accelerator-feng/AccBlogServer)
+
+## 博客地址: http://yinfengblog.com
 ## egg + mongodb
 ## QuickStart
 如需进一步了解，参见 [egg 文档][egg]。
@@ -37,5 +39,9 @@ GET /api/archives/:year/:month
 分类
 GET /api/categories/:category
 ```
+
+---
+![Markdown](http://i2.kiimg.com/582196/c229d2f00d338d96.png)
+---
 
 [egg]: https://eggjs.org
