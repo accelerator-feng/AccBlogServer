@@ -29,14 +29,15 @@ module.exports = app => {
       const check = yield service.session.check(body);
       if (!check) {
         const err = new Error('Invalid Grant');
-        err.status = 400;
+        err.status = 403;
         throw err;
       } else {
         if (rememberMe) {
           ctx.session.maxAge = ms('7d');
         }
         ctx.session.username = username;
-        ctx.body = { username };
+        ctx.rotateCsrfSecret();
+        ctx.body = { success: true };
         ctx.status = 201;
       }
     }
