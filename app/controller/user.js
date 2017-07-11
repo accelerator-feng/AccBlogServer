@@ -43,7 +43,7 @@ module.exports = app => {
       const hasUser = yield service.user.query(ctx.query.username);
       ctx.body = {
         hasUser,
-        message: hasUser ? 'Username already exists' : 'Username available',
+        message: hasUser ? 'Username Already Exists' : 'Username Available',
       };
     }
   }

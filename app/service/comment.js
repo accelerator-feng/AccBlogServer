@@ -8,7 +8,9 @@ module.exports = app => {
       return result;
     }
     *show(articleId) {
-      const commentList = yield this.ctx.model.Comment.find({ articleId });
+      const commentList = yield this.ctx.model.Comment
+        .find({ articleId })
+        .populate('user', ['username', 'avatar']);
       return commentList;
     }
   }

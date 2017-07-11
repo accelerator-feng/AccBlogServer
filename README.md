@@ -24,6 +24,9 @@ DELETE /api/session
 GET /api/comment/:id
 POST /api/comment  
 
+设置/更改头像
+POST /api/avatar
+
 首页
 GET /api/index  
 

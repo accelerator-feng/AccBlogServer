@@ -28,4 +28,7 @@ module.exports = app => {
 
   // 分类
   app.get('/api/categories/:category', 'category.show');
+
+  // 头像
+  app.post('/api/avatar', 'avatar.create');
 };

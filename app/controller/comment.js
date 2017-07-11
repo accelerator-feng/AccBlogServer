@@ -21,9 +21,11 @@ module.exports = app => {
         },
       };
       ctx.validate(createRule);
-      const username = ctx.session.username || 'tourist';
+      const id = ctx.session.id || '595cf55e457bc00f47d2ff37';
       const res = yield service.comment.create(
-        Object.assign(ctx.request.body, { username }),
+        Object.assign(ctx.request.body, {
+          user: id,
+        }),
       );
       ctx.body = { id: res._id };
       ctx.status = 201;

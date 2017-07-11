@@ -35,9 +35,10 @@ module.exports = app => {
         if (rememberMe) {
           ctx.session.maxAge = ms('7d');
         }
-        ctx.session.username = username;
+        const { avatar, id } = yield service.avatar.query(username);
+        ctx.session.id = id;
         ctx.rotateCsrfSecret();
-        ctx.body = { success: true };
+        ctx.body = { username, avatar, id };
         ctx.status = 201;
       }
     }
@@ -47,10 +48,11 @@ module.exports = app => {
       ctx.status = 204;
     }
     *loginStatus() {
-      const { ctx } = this;
-      const username = ctx.session.username;
-      if (username) {
-        ctx.body = { username };
+      const { ctx, service } = this;
+      const id = ctx.session.id;
+      if (id) {
+        const userData = yield service.avatar.find(id);
+        ctx.body = userData;
       } else {
         ctx.body = { message: 'The user is not logged in' };
       }

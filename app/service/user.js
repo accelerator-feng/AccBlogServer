@@ -10,6 +10,7 @@ module.exports = app => {
             username: r_username,
           },
           password,
+          { avatar: '' },
         ),
       );
       const result = yield user.save();

@@ -9,7 +9,7 @@ module.exports = appInfo => {
       match: '/api',
     },
 
-    static: { prefix: '', maxAge: 86400, gzip: true, usePrecompiledGzip: true },
+    static: { prefix: '' },
 
     mongoose: {
       url: 'mongodb://127.0.0.1:29999/blog',
