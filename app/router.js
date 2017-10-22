@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = app => {
+  if (app.config.env === 'local') {
+    app.redirect('/', '/index.html');
+  }
   // 注册
   app.get('/api/user', 'user.query');
   app.post('/api/user', 'user.create');
